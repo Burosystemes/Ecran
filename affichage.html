@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Affichage Dynamique</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="viewer" src=""></iframe>
+
+  <script>
+    const pages = [
+      "https://calendar.google.com/calendar/embed?src=burosystemes.showroom%40gmail.com&ctz=Europe%2FParis",
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6gZWLnwf5zxv0GR6IYL8RSx-VkD75V-sAnGXGRzYo1mby12LREzSN7n3bGFwYzqoFXV7FZLsApMkn/pubhtml?widget=true&headers=false"
+    ];
+
+    let index = 0;
+    const iframe = document.getElementById("viewer");
+
+    function switchPage() {
+      iframe.src = pages[index];
+      index = (index + 1) % pages.length;
+    }
+
+    // Démarrer avec la première page
+    switchPage();
+
+    // Changer toutes les 60 secondes
+    setInterval(switchPage, 60000);
+  </script>
+</body>
+</html>
